@@ -1,4 +1,8 @@
-import { Resolver } from '@nestjs/graphql';
+import { Query, Resolver } from '@nestjs/graphql';
+import { Employee } from './entities/employee.entity';
 
-@Resolver()
-export class EmployeeResolver {}
+@Resolver(() => Employee)
+export class EmployeeResolver {
+  @Query(() => Employee)
+  findAll() {}
+}
