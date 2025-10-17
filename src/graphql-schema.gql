@@ -11,5 +11,5 @@ type Employee {
 }
 
 type Query {
-  findAll: Employee!
+  getAllEmployees: Employee!
 }
