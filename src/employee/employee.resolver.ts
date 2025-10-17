@@ -6,7 +6,7 @@ import { EmployeeService } from './employee.service';
 export class EmployeeResolver {
   constructor(private employeeService: EmployeeService) {}
 
-  @Query(() => Employee, { name: 'getAllEmployees' })
+  @Query(() => [Employee], { name: 'getAllEmployees' })
   findAll() {
     return this.employeeService.findAll();
   }
