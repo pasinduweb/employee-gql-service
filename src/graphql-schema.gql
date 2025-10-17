@@ -10,12 +10,21 @@ type Employee {
   city: String
 }
 
+type Project {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
 type Query {
   getAllEmployees: [Employee!]!
+  project(id: Int!): Project!
 }
 
 type Mutation {
   createEmployee(employeeInput: EmployeeCreateDto!): Employee!
+  createProject(createProjectInput: CreateProjectInput!): Project!
+  updateProject(updateProjectInput: UpdateProjectInput!): Project!
+  removeProject(id: Int!): Project!
 }
 
 input EmployeeCreateDto {
@@ -23,4 +32,15 @@ input EmployeeCreateDto {
   lastName: String!
   designation: String!
   city: String
+}
+
+input CreateProjectInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateProjectInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
 }
