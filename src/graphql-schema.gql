@@ -37,6 +37,7 @@ input EmployeeCreateDto {
   lastName: String!
   designation: String!
   city: String
+  projectId: String!
 }
 
 input CreateProjectInput {
