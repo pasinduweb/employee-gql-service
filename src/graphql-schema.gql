@@ -29,7 +29,7 @@ type Mutation {
   createEmployee(employeeInput: EmployeeCreateDto!): Employee!
   createProject(project: CreateProjectInput!): Project!
   updateProject(project: UpdateProjectInput!): Project!
-  removeProject(id: Int!): Project!
+  removeProject(id: String!): Project!
 }
 
 input EmployeeCreateDto {

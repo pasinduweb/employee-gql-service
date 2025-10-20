@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProjectInput } from './dto/create-project.input';
 import { UpdateProjectInput } from './dto/update-project.input';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -34,7 +34,14 @@ export class ProjectService {
     return this.projectRepository.save(project);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} project`;
+  async remove(id: string) {
+    const proj = await this.findOne(id);
+    if (proj) {
+      const ret = await this.projectRepository.delete(id);
+      if (ret.affected === 1) {
+        return proj;
+      }
+    }
+    throw new NotFoundException(`Cannot find id ${id}`);
   }
 }
