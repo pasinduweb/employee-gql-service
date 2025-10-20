@@ -11,19 +11,21 @@ type Employee {
 }
 
 type Project {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  id: String!
+  name: String!
+  code: Int!
 }
 
 type Query {
   getAllEmployees: [Employee!]!
-  project(id: Int!): Project!
+  getAllProjects: [Project!]!
+  project(id: Float!): Project!
 }
 
 type Mutation {
   createEmployee(employeeInput: EmployeeCreateDto!): Employee!
-  createProject(createProjectInput: CreateProjectInput!): Project!
-  updateProject(updateProjectInput: UpdateProjectInput!): Project!
+  createProject(project: CreateProjectInput!): Project!
+  updateProject(project: UpdateProjectInput!): Project!
   removeProject(id: Int!): Project!
 }
 
@@ -35,12 +37,12 @@ input EmployeeCreateDto {
 }
 
 input CreateProjectInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
+  code: Int!
 }
 
 input UpdateProjectInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
+  id: String!
+  name: String!
+  code: Int!
 }

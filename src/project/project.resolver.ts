@@ -9,30 +9,23 @@ export class ProjectResolver {
   constructor(private readonly projectService: ProjectService) {}
 
   @Mutation(() => Project)
-  createProject(
-    @Args('createProjectInput') createProjectInput: CreateProjectInput,
-  ) {
-    return this.projectService.create(createProjectInput);
+  createProject(@Args('project') project: CreateProjectInput) {
+    return this.projectService.create(project);
   }
 
-  @Query(() => [Project], { name: 'project' })
+  @Query(() => [Project], { name: 'getAllProjects' })
   findAll() {
     return this.projectService.findAll();
   }
 
   @Query(() => Project, { name: 'project' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(@Args('id') id: number) {
     return this.projectService.findOne(id);
   }
 
   @Mutation(() => Project)
-  updateProject(
-    @Args('updateProjectInput') updateProjectInput: UpdateProjectInput,
-  ) {
-    return this.projectService.update(
-      updateProjectInput.id,
-      updateProjectInput,
-    );
+  updateProject(@Args('project') project: UpdateProjectInput) {
+    return this.projectService.update(project.id, project);
   }
 
   @Mutation(() => Project)
