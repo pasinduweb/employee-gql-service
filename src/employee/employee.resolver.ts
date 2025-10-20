@@ -25,6 +25,11 @@ export class EmployeeResolver {
     return this.employeeService.create(employee);
   }
 
+  @Query(() => Employee, { name: 'findOneEmployee' })
+  findOne(@Args('id') id: string) {
+    return this.employeeService.findOne(id);
+  }
+
   @ResolveField(() => Project)
   project(@Parent() employee: Employee) {
     return this.employeeService.getProject(employee.projectId);
