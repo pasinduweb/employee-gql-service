@@ -29,7 +29,9 @@ export class ProjectService {
   }
 
   update(id: string, updateProjectInput: UpdateProjectInput) {
-    return `This action updates a #${id} project`;
+    const project: Project = this.projectRepository.create(updateProjectInput);
+    project.id = id;
+    return this.projectRepository.save(project);
   }
 
   remove(id: number) {
