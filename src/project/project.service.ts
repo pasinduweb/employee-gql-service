@@ -16,11 +16,16 @@ export class ProjectService {
   }
 
   async findAll(): Promise<Project[]> {
-    return this.projectRepository.find();
+    return this.projectRepository.find({
+      relations: ['employees'],
+    });
   }
 
-  async findOne(id: number): Promise<Project | null> {
-    return this.projectRepository.findOne({ where: { id: id.toString() } });
+  async findOne(id: string): Promise<Project | null> {
+    return this.projectRepository.findOne({
+      where: { id: id.toString() },
+      relations: ['employees'],
+    });
   }
 
   update(id: string, updateProjectInput: UpdateProjectInput) {
