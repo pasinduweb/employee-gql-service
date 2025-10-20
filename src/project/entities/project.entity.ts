@@ -18,6 +18,6 @@ export class Project {
   code: number;
 
   @OneToMany(() => Employee, (employee) => employee.project)
-  @Field(() => Employee)
+  @Field(() => [Employee], { nullable: true })
   employees: Employee[];
 }

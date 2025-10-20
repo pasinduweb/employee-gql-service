@@ -6,7 +6,7 @@ type Project {
   id: String!
   name: String!
   code: Int!
-  employees: Employee!
+  employees: [Employee!]
 }
 
 type Employee {
